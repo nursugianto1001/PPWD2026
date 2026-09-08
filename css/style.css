@@ -1,0 +1,330 @@
+/* ==========================================================
+   Kedai Kopi Ranting — style.css
+   Tokens
+   ========================================================== */
+:root {
+  --espresso: #241812;
+  --cream: #EFE7D8;
+  --gold: #C69C4A;
+  --moss: #4E5D45;
+  --rust: #A8552E;
+  --ink: #2A2119;
+
+  --font-display: "Fraunces", serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+  --max-width: 1080px;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--cream);
+  line-height: 1.55;
+}
+
+h1, h2 {
+  font-family: var(--font-display);
+  color: var(--espresso);
+  margin: 0 0 0.4em;
+  line-height: 1.1;
+}
+
+h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 600; }
+h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 600; margin-bottom: 1em; }
+
+p { max-width: 62ch; }
+
+a { color: inherit; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ----------------------------------------------------------
+   Header
+   ---------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(239, 231, 216, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(36, 24, 18, 0.1);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--espresso);
+}
+.logo span { color: var(--rust); }
+
+.nav {
+  display: flex;
+  gap: 28px;
+}
+.nav a {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--ink);
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+.nav a:hover { border-color: var(--rust); }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  background: var(--espresso);
+  border-radius: 2px;
+}
+
+/* ----------------------------------------------------------
+   Hero
+   ---------------------------------------------------------- */
+.hero { padding: 72px 0 96px; }
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 0 0 20px;
+}
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--moss);
+}
+.hero-status.is-closed .status-dot { background: var(--rust); }
+
+.hero-lede {
+  color: #4a3f34;
+  margin-bottom: 28px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 13px 28px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--espresso);
+  color: var(--cream);
+}
+.btn-primary:hover { background: #382519; }
+
+.hero-art svg { width: 100%; height: auto; max-width: 320px; margin: 0 auto; display: block; }
+
+/* ----------------------------------------------------------
+   Menu
+   ---------------------------------------------------------- */
+.menu { padding: 64px 0; border-top: 1px solid rgba(36,24,18,0.1); }
+
+.menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 24px;
+}
+
+.menu-item-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.menu-item-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  white-space: nowrap;
+}
+.menu-item-dots {
+  flex: 1;
+  border-bottom: 1px dotted rgba(36,24,18,0.35);
+  height: 0;
+  transform: translateY(-6px);
+}
+.menu-item-price {
+  font-weight: 600;
+  color: var(--rust);
+  white-space: nowrap;
+}
+.menu-item-desc {
+  margin: 6px 0 0;
+  color: #4a3f34;
+  font-size: 0.95rem;
+}
+
+/* ----------------------------------------------------------
+   Tentang
+   ---------------------------------------------------------- */
+.tentang {
+  background: var(--espresso);
+  color: var(--cream);
+  padding: 72px 0;
+}
+.tentang h2 { color: var(--cream); }
+.tentang-inner p { color: #d8cdbb; }
+
+/* ----------------------------------------------------------
+   Kontak
+   ---------------------------------------------------------- */
+.kontak { padding: 72px 0; }
+
+.kontak-inner {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 48px;
+}
+
+.kontak-detail {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  color: #4a3f34;
+  font-size: 0.95rem;
+}
+.kontak-detail li { margin-bottom: 6px; }
+
+.kontak-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #fff;
+  padding: 28px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(36,24,18,0.1);
+}
+.kontak-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 12px;
+}
+.kontak-form input,
+.kontak-form textarea {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 10px 12px;
+  border: 1px solid rgba(36,24,18,0.25);
+  border-radius: var(--radius);
+  background: var(--cream);
+  color: var(--ink);
+}
+.kontak-form input:focus,
+.kontak-form textarea:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+}
+.kontak-form button { margin-top: 18px; align-self: flex-start; }
+
+.form-alert {
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  margin: 0 0 6px;
+}
+.form-alert-success { background: #e5ede1; color: var(--moss); }
+.form-alert-error { background: #f4e2da; color: var(--rust); }
+
+/* ----------------------------------------------------------
+   Footer
+   ---------------------------------------------------------- */
+.site-footer {
+  border-top: 1px solid rgba(36,24,18,0.1);
+  padding: 24px 0;
+}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #4a3f34;
+}
+.back-to-top {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(36,24,18,0.25);
+  background: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.back-to-top:hover { background: var(--espresso); color: var(--cream); }
+
+/* ----------------------------------------------------------
+   Responsive
+   ---------------------------------------------------------- */
+@media (max-width: 760px) {
+  .hero-inner,
+  .kontak-inner {
+    grid-template-columns: 1fr;
+  }
+  .hero-art { order: -1; max-width: 220px; margin: 0 auto; }
+
+  .nav {
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--cream);
+    flex-direction: column;
+    padding: 16px 24px;
+    gap: 16px;
+    border-bottom: 1px solid rgba(36,24,18,0.1);
+    display: none;
+  }
+  .nav.is-open { display: flex; }
+  .nav-toggle { display: flex; }
+}
